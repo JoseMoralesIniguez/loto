@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el alma de sabia</title>
+    <!-- Tipografía elegante estilo cursiva -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= RESET Y DISEÑO BASE ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Dancing Script', cursive;
+            overflow: hidden; 
+            color: #fde047;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        /* ================= ANIMACIONES DE LA FLOR (LOTO) ================= */
+        .flower-container {
+            width: 250px;
+            height: 300px;
+            position: relative;
+            transform-origin: bottom center;
+            animation: sway 6s ease-in-out infinite alternate;
+            /* Resplandor amarillo/dorado actualizado */
+            filter: drop-shadow(0 0 20px rgba(253, 224, 71, 0.4));
+            margin-bottom: 20px;
+        }
+
+        .flower-head {
+            transform-origin: 100px 150px;
+            animation: breathe 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(-4deg); }
+            100% { transform: rotate(4deg); }
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(0.96); }
+            100% { transform: scale(1.04); }
+        }
+
+        /* ================= ABEJAS VOLADORAS ================= */
+        .bee {
+            position: absolute;
+            font-size: 1.5rem;
+            z-index: 20;
+            filter: drop-shadow(0 0 5px rgba(253, 224, 71, 0.8));
+        }
+
+        .bee1 {
+            top: 30%; 
+            left: 50%;
+            margin-left: -12px; margin-top: -12px;
+            animation: fly1 7s ease-in-out infinite;
+        }
+
+        .bee2 {
+            top: 40%; 
+            left: 50%;
+            font-size: 1.2rem;
+            margin-left: -10px; margin-top: -10px;
+            animation: fly2 10s ease-in-out infinite;
+        }
+
+        @keyframes fly1 {
+            0% { transform: translate(-120px, 0px) scaleX(-1); }
+            25% { transform: translate(0px, -70px) scaleX(-1); }
+            49.9% { transform: translate(120px, 0px) scaleX(-1); }
+            50% { transform: translate(120px, 0px) scaleX(1); }
+            75% { transform: translate(0px, 40px) scaleX(1); }
+            99.9% { transform: translate(-120px, 0px) scaleX(1); }
+            100% { transform: translate(-120px, 0px) scaleX(-1); }
+        }
+
+        @keyframes fly2 {
+            0% { transform: translate(100px, 30px) scaleX(1); }
+            25% { transform: translate(0px, 90px) scaleX(1); }
+            49.9% { transform: translate(-100px, 30px) scaleX(1); }
+            50% { transform: translate(-100px, 30px) scaleX(-1); }
+            75% { transform: translate(0px, -60px) scaleX(-1); }
+            99.9% { transform: translate(100px, 30px) scaleX(-1); }
+            100% { transform: translate(100px, 30px) scaleX(1); }
+        }
+
+        /* ================= ESTILOS DEL MENSAJE ================= */
+        .message-container {
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .message {
+            font-size: 2.3rem;
+            text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);
+            line-height: 1.4;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 2.2rem;
+            background-color: #fde047;
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #play-btn {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-family: inherit;
+            font-size: 1.5rem;
+            background-color: transparent;
+            color: #fde047;
+            border: 2px solid #fde047;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
+            z-index: 20;
+        }
+
+        #play-btn:hover {
+            background-color: #fde047;
+            color: #020617;
+        }
+
+        /* ================= DESTELLOS DORADOS (PARTÍCULAS) ================= */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: #fef08a;
+            border-radius: 50%;
+            box-shadow: 0 0 12px 3px rgba(254, 240, 138, 0.8);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0); opacity: 0; }
+            20% { opacity: 1; transform: translateY(80vh) scale(1.2); }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(0); opacity: 0; }
+        }
+
+        /* ================= DISEÑO RESPONSIVO ================= */
+        @media (max-width: 768px) {
+            .flower-container { width: 220px; height: 260px; }
+            .message { font-size: 1.8rem; }
+            .cursor { height: 1.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .flower-container { width: 180px; height: 220px; margin-bottom: 10px; }
+            .message { font-size: 1.5rem; }
+            .cursor { height: 1.5rem; }
+            .container { padding: 10px; }
+            #play-btn { font-size: 1.2rem; padding: 8px 16px; }
+            @keyframes fly1 {
+                0%, 100% { transform: translate(-90px, 0px) scaleX(-1); }
+                25% { transform: translate(0px, -50px) scaleX(-1); }
+                49.9% { transform: translate(90px, 0px) scaleX(-1); }
+                50% { transform: translate(90px, 0px) scaleX(1); }
+                75% { transform: translate(0px, 30px) scaleX(1); }
+                99.9% { transform: translate(-90px, 0px) scaleX(1); }
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <audio id="bg-music" loop>
+        <source src="Los Amigos Invisibles - La Que Me Gusta (Versión Acústica).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <div class="flower-container">
+            <div class="bee bee1">🐝</div>
+            <div class="bee bee2">🐝</div>
+
+            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <path d="M100 170 C 90 210, 110 230, 100 250" stroke="#059669" stroke-width="5" fill="none" />
+                <path d="M100 200 Q 80 190, 70 210 Q 90 220, 100 205" fill="#047857"/>
+                <path d="M100 220 Q 120 200, 130 220 Q 110 230, 100 225" fill="#047857"/>
+                
+                <g class="flower-head">
+                    <!-- Capa trasera (pétalos dorados/ámbar oscuro) -->
+                    <path d="M100 180 C 40 130, 50 60, 100 40 C 150 60, 160 130, 100 180" fill="#d97706" />
+                    <!-- Pétalos laterales exteriores (amarillo brillante) -->
+                    <path d="M100 180 C 10 140, 20 80, 70 70 C 90 120, 95 150, 100 180" fill="#eab308" />
+                    <path d="M100 180 C 190 140, 180 80, 130 70 C 110 120, 105 150, 100 180" fill="#eab308" />
+                    <!-- Pétalos laterales interiores (amarillo suave) -->
+                    <path d="M100 180 C 40 160, 35 90, 85 75 C 95 120, 98 150, 100 180" fill="#fde047" />
+                    <path d="M100 180 C 160 160, 165 90, 115 75 C 105 120, 102 150, 100 180" fill="#fde047" />
+                    <!-- Pétalo frontal/central (amarillo muy claro) -->
+                    <path d="M100 180 C 70 140, 80 75, 100 55 C 120 75, 130 140, 100 180" fill="#fef9c3" />
+                    
+                    <!-- Brillo central/polen mágico -->
+                    <circle cx="100" cy="140" r="10" fill="#fef08a" opacity="0.9" filter="blur(3px)" />
+                    <circle cx="100" cy="140" r="5" fill="#ffffff" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="message-container">
+            <div>
+                <span class="message" id="typewriter-text"></span>
+                <span class="cursor" id="cursor"></span>
+            </div>
+            <button id="play-btn">Descubrir ✨</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const textoMensaje = "Para la muchacha con alma de sabia que tanto deslumbra,<br>que todos tus proyectos se logren<br>y recuerda perderle el miedo al éxito.";
+            
+            const elementoTexto = document.getElementById("typewriter-text");
+            const cursor = document.getElementById("cursor");
+            const botonPlay = document.getElementById("play-btn");
+            const musica = document.getElementById("bg-music");
+            
+            let index = 0;
+            let esTagHTML = false;
+            let textoActual = "";
+
+            cursor.style.display = "none";
+            musica.volume = 0.2;
+
+            botonPlay.addEventListener('click', () => {
+                musica.play().catch(e => console.log("El navegador requiere interacción manual extra.", e));
+                botonPlay.style.display = "none";
+                cursor.style.display = "inline-block";
+                setTimeout(escribirTexto, 600);
+            });
+
+            function escribirTexto() {
+                if (index < textoMensaje.length) {
+                    let caracter = textoMensaje.charAt(index);
+                    
+                    if (caracter === '<') {
+                        esTagHTML = true;
+                    }
+                    
+                    textoActual += caracter;
+                    elementoTexto.innerHTML = textoActual;
+                    index++;
+
+                    if (caracter === '>') {
+                        esTagHTML = false;
+                    }
+
+                    let velocidad = esTagHTML ? 0 : 50 + Math.random() * 40; 
+                    setTimeout(escribirTexto, velocidad);
+                } else {
+                    setTimeout(() => {
+                        cursor.style.display = "none";
+                    }, 3000);
+                }
+            }
+
+            const contenedorParticulas = document.getElementById('particles');
+            const cantidadParticulas = 35;
+
+            for (let i = 0; i < cantidadParticulas; i++) {
+                let particula = document.createElement('div');
+                particula.classList.add('particle');
+
+                let tamaño = Math.random() * 3 + 2; 
+                particula.style.width = `${tamaño}px`;
+                particula.style.height = `${tamaño}px`;
+                particula.style.left = `${Math.random() * 100}vw`;
+
+                let duracion = Math.random() * 8 + 8;
+                particula.style.animationDuration = `${duracion}s`;
+                particula.style.animationDelay = `${Math.random() * 5}s`;
+
+                contenedorParticulas.appendChild(particula);
+            }
+        });
+    </script>
+</body>
+</html>
